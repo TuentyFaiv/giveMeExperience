@@ -1,0 +1,14 @@
+@import "../lib/vars.scss";
+
+.searchBox {
+  display: block;
+  width: 500px;
+  height: 35px;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  text-indent: 10px;
+  font-family: $f-normal;
+  outline: 0;
+}

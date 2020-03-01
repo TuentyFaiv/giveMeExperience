@@ -1,0 +1,285 @@
+@import "./lib/fonts.scss";
+@import "./lib/vars.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $f-normal;
+  background-color: $c-bg2;
+  color: $c-black;
+}
+
+.layout__container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.post {
+  width: calc(100% - 300px);
+  margin: 40px 150px;
+  &-header {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid $c-gray4;
+    a {
+      display: flex;
+      color: $c-black;
+      text-decoration: none;
+      align-items: center;
+    }
+  }
+  &-user {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    img {
+      width: 35px;
+      height: 35px;
+      border-radius: 35px;
+      margin-right: 10px;
+    }
+    h3 {
+      margin: 0;
+    }
+  }
+  &-content {
+    margin: 10px 0;
+  }
+  &-actions {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    div {
+      display: flex;
+      margin-right: 10px;
+      align-items: center;
+      img {
+        margin-right: 5px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &-small {
+    margin: 20px 0;
+  }
+}
+
+.box {
+  display: flex;
+  padding: 15px;
+  background-color: darken($color: white, $amount: 2);
+  box-shadow: 0px 0px 10px 0px $c-gray4;
+  border-radius: 10px;
+  flex-direction: column;
+  &-header {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      margin: 0;
+    }
+  }
+  &-options {
+    margin: 5px 0;
+    div {
+      width: 7px;
+      height: 7px;
+      border-radius: 7px;
+      background-color: $c-gray4;
+      &:nth-child(2) {
+        margin: 4px 0;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-actions {
+    display: flex;
+    height: 30px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      height: 30px;
+    }
+    img {
+      margin: 3px 5px;
+    }
+    p {
+      margin: 0;
+      font-size: $fs-small;
+    }
+    button {
+      width: 120px;
+      height: 30px;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 10px;
+      background-color: $c-gray4;
+      color: $c-black;
+      font-family: $f-normal;
+      outline: 0;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  h3 {
+    font-family: $f-normal;
+    font-size: $fs-normal;
+  }
+}
+
+.page {
+  width: calc(100% - 70px);
+  margin: 0px 0px 0 70px;
+  &-container {
+    width: calc(100% - 410px);
+    margin: 20px 170px 50px 240px;
+  }
+  &__header {
+    position: relative;
+    height: 350px;
+    &-back {
+      position: absolute;
+      width: calc(30px - 6px);
+      height: 30px;
+      padding: 0 4px 0 2px;
+      background-color: $c-gray4;
+      border-radius: 30px;
+      top: 20px;
+      left: 20px;
+      img {
+        margin: 3px 0 3px;
+        transform: rotate(180deg);
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    &-banner {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+    &-title{
+      position: absolute;
+      display: flex;
+      width: calc(100% - 340px);
+      padding: 0 170px;
+      bottom: 30px;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+        height: 40px;
+        margin: 0;
+        margin-right: 25px;
+        padding: 0;
+        font-family: $f-xxlarge;
+        font-size: $fs-xxlarge;
+      }
+      h3 {
+        margin: 6px 0;
+        font-size: $fs-normal;
+      }
+      button {
+        width: 150px;
+        height: 30px;
+        margin: 0;
+        padding: 0;
+        font-family: $f-normal;
+        border: none;
+        border-radius: 10px;
+        outline: 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      div {
+        display: flex;
+        height: 40px;
+        align-items: flex-end;
+      }
+      div img {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        margin-left: 15px;
+        background-color: $c-gray4;
+        border-radius: 40px;
+        object-fit: cover;
+      }
+    }
+  }
+  &__content {
+    position: relative;
+    margin: 30px 170px 50px;
+    h3 {
+      display: inline;
+      padding: 2.5px 0;
+      font-size: $fs-normal;
+    }
+    button {
+      width: 180px;
+      height: 30px;
+      margin: 0 20px 35px 0;
+      padding: 0;
+      font-family: $f-normal;
+      border: none;
+      border-radius: 10px;
+      outline: 0;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    p {
+      margin: 20px 0;
+    }
+    img {
+      width: calc(100% - 200px);
+      margin: 25px 100px;
+      object-fit: cover;
+    }
+    &-actions {
+      position: absolute;
+      display: flex;
+      width: 100px;
+      height: 300px;
+      align-items: center;
+      flex-direction: column;
+      right: -100px;
+      img {
+        width: 24px;
+        height: 24px;
+        margin: 0 0 25px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@import "./containers/feed.scss";
+@import "./containers/projects.scss";
+@import "./containers/events.scss";
+@import "./containers/profile.scss";
+@import "./components/sidebar.scss";
+@import './components/searchBox.scss';
+
+.m {
+  &-0 {
+    margin: 0;
+  }
+  &-20-0 {
+    margin: 20px 0;
+  }
+}

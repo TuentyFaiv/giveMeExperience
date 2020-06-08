@@ -112,3 +112,5 @@ temp/
 
 node_modules
 dist
+.now
+.idea/

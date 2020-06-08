@@ -1,15 +1,23 @@
 const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+
+dotenv.config();
+
 const dev = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: ['@babel/polyfill', './src/index.js'],
+  devtool: dev ? 'cheap-source-map' : 'hidden-source-map',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: dev ? 'js/[name].js' : 'js/[name].[hash].js',
-    publicPath: '/'
+    publicPath: '/',
+    chunkFilename: 'js/[id].[chunkhash].js'
   },
   devServer: {
     port: 3000,
@@ -19,7 +27,8 @@ module.exports = {
     stats: { colors: true }
   },
   optimization: {
-    minimizer: dev ? [] : [new TerserWebpackPlugin()],
+    minimize: !dev,
+    minimizer: dev ? [] : [new TerserWebpackPlugin({}), new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       chunks: 'async',
       name: true,
@@ -47,12 +56,18 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
+        enforce: 'pre',
         use: {
-          loader: 'babel-loader'
+          loader: 'eslint-loader'
         }
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.(sc|c)ss$/,
         use: [
           {
             loader: MiniCSSExtractPlugin.loader,
@@ -85,6 +100,7 @@ module.exports = {
     ]
   },
   plugins: [
+    dev ? new webpack.HotModuleReplacementPlugin() : () => {},
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html'

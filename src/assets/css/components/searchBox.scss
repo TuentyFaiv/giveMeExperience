@@ -1,14 +1,29 @@
 @import "../lib/vars.scss";
 
 .searchBox {
-  display: block;
+  position: relative;
   width: 500px;
   height: 35px;
-  margin: 0 auto;
-  padding: 0;
-  border: none;
-  border-radius: 10px;
-  text-indent: 10px;
-  font-family: $f-normal;
-  outline: 0;
+  padding: 7.5px 0;
+  input {
+    display: block;
+    width: 500px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    text-indent: 10px;
+    font-family: $f-normal;
+    outline: 0;
+  }
+  svg {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    color: $c-gray2;
+    object-fit: cover;
+    top: 12.5px;
+    right: 10px;
+    bottom: 12.5px;
+  }
 }

@@ -5,19 +5,26 @@ body {
   margin: 0;
   padding: 0;
   font-family: $f-normal;
-  background-color: $c-bg2;
+  background-color: $c-bgWhite;
   color: $c-black;
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+    background-color: $c-gray4;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 10px;
+    background-color: $c-gray;
+  }
 }
 
-.layout__container {
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-}
+@import "./components/layout.scss";
 
 .post {
-  width: calc(100% - 300px);
-  margin: 40px 150px;
+  width: calc(100% - 530px);
+  margin: 40px 250px;
+  background-color: $c-white;
   &-header {
     display: flex;
     width: 100%;
@@ -37,6 +44,7 @@ body {
     img {
       width: 35px;
       height: 35px;
+      background-color: $c-white;
       border-radius: 35px;
       margin-right: 10px;
     }
@@ -55,10 +63,19 @@ body {
       display: flex;
       margin-right: 10px;
       align-items: center;
-      img {
+      svg {
+        width: 25px;
+        height: 25px;
+        object-fit: cover;
         margin-right: 5px;
         &:hover {
           cursor: pointer;
+        }
+      }
+      &:last-child {
+        svg {
+          width: 28px;
+          height: 28px;
         }
       }
     }
@@ -71,8 +88,8 @@ body {
 .box {
   display: flex;
   padding: 15px;
-  background-color: darken($color: white, $amount: 2);
-  box-shadow: 0px 0px 10px 0px $c-gray4;
+  background-color: $c-white;
+  box-shadow: 0px 0px 8px 0px $c-gray4;
   border-radius: 10px;
   flex-direction: column;
   &-header {
@@ -91,7 +108,7 @@ body {
       width: 7px;
       height: 7px;
       border-radius: 7px;
-      background-color: $c-gray4;
+      background-color: $c-secondTwo;
       &:nth-child(2) {
         margin: 4px 0;
       }
@@ -116,21 +133,6 @@ body {
       margin: 0;
       font-size: $fs-small;
     }
-    button {
-      width: 120px;
-      height: 30px;
-      margin: 0;
-      padding: 0;
-      border: none;
-      border-radius: 10px;
-      background-color: $c-gray4;
-      color: $c-black;
-      font-family: $f-normal;
-      outline: 0;
-      &:hover {
-        cursor: pointer;
-      }
-    }
   }
   h3 {
     font-family: $f-normal;
@@ -139,8 +141,8 @@ body {
 }
 
 .page {
-  width: calc(100% - 70px);
-  margin: 0px 0px 0 70px;
+  width: calc(100% - 60px);
+  margin: 55px 0px 0 60px;
   &-container {
     width: calc(100% - 410px);
     margin: 20px 170px 50px 240px;
@@ -148,27 +150,21 @@ body {
   &__header {
     position: relative;
     height: 350px;
-    &-back {
-      position: absolute;
-      width: calc(30px - 6px);
-      height: 30px;
-      padding: 0 4px 0 2px;
-      background-color: $c-gray4;
-      border-radius: 30px;
-      top: 20px;
-      left: 20px;
-      img {
-        margin: 3px 0 3px;
-        transform: rotate(180deg);
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
     &-banner {
       width: 100%;
       height: 350px;
       object-fit: cover;
+    }
+    &-overlay {
+      position: absolute;
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(.50turn, $c-white, $c-black);
+      opacity: .15;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
     &-title{
       position: absolute;
@@ -183,39 +179,28 @@ body {
         margin: 0;
         margin-right: 25px;
         padding: 0;
+        color: $c-white;
         font-family: $f-xxlarge;
         font-size: $fs-xxlarge;
       }
       h3 {
         margin: 6px 0;
+        color: $c-white;
         font-size: $fs-normal;
-      }
-      button {
-        width: 150px;
-        height: 30px;
-        margin: 0;
-        padding: 0;
-        font-family: $f-normal;
-        border: none;
-        border-radius: 10px;
-        outline: 0;
-        &:hover {
-          cursor: pointer;
-        }
       }
       div {
         display: flex;
         height: 40px;
         align-items: flex-end;
-      }
-      div img {
-        width: 40px;
-        height: 40px;
-        margin: 0;
-        margin-left: 15px;
-        background-color: $c-gray4;
-        border-radius: 40px;
-        object-fit: cover;
+        img {
+          width: 40px;
+          height: 40px;
+          margin: 0;
+          margin-left: 15px;
+          background-color: $c-gray4;
+          border-radius: 40px;
+          object-fit: cover;
+        }
       }
     }
   }
@@ -226,19 +211,6 @@ body {
       display: inline;
       padding: 2.5px 0;
       font-size: $fs-normal;
-    }
-    button {
-      width: 180px;
-      height: 30px;
-      margin: 0 20px 35px 0;
-      padding: 0;
-      font-family: $f-normal;
-      border: none;
-      border-radius: 10px;
-      outline: 0;
-      &:hover {
-        cursor: pointer;
-      }
     }
     p {
       margin: 20px 0;
@@ -256,24 +228,46 @@ body {
       align-items: center;
       flex-direction: column;
       right: -100px;
-      img {
+      svg {
         width: 24px;
         height: 24px;
+        object-fit: cover;
         margin: 0 0 25px;
         &:hover {
           cursor: pointer;
+        }
+        &:last-child {
+          width: 28px;
+          height: 28px;
         }
       }
     }
   }
 }
 
+@import "./containers/auth.scss";
 @import "./containers/feed.scss";
 @import "./containers/projects.scss";
 @import "./containers/events.scss";
 @import "./containers/profile.scss";
-@import "./components/sidebar.scss";
+@import './containers/dms.scss';
 @import './components/searchBox.scss';
+
+.terms-conditions {
+  position: absolute;
+  margin: 2px;
+  font-size: $fs-small;
+  text-align: center;
+  bottom: 10px;
+  a {
+    text-decoration: none;
+    color: $c-black;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
 
 .m {
   &-0 {
@@ -281,5 +275,116 @@ body {
   }
   &-20-0 {
     margin: 20px 0;
+  }
+}
+
+.mr {
+  &-20 {
+    margin-right: 20px;
+  }
+}
+
+.btn {
+  min-width: 100px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  font-family: $f-normal;
+  outline: 0;
+  &-primary {
+    height: 40px;
+    margin: 10px;
+    color: $c-white;
+    background-color: $c-primary;
+    font-size: $fs-normal;
+    &:hover {
+      box-shadow: 0px 0px 10px 0px $c-gray3;
+    }
+  }
+  &-secondary {
+    height: 36px;
+    margin: 20px;
+    color: $c-white;
+    background-color: $c-secondTwo;
+    font-size: $fs-normal;
+    &:hover {
+      box-shadow: 0px 0px 10px 0px $c-gray3;
+    }
+  }
+  &-secondaryTwo {
+    background-color: $c-secondOne;
+  }
+  &-select_path{
+    width: 17%;
+  }
+  &-next{
+    width: 36%;
+  }
+  &-previus {
+    width: 10%;
+    margin: 20px 0;
+    font-size: $fs-small + 1;
+    &:hover {
+      box-shadow: none;
+      color: $c-secondTwob3;
+      text-decoration: underline;
+    }
+  }
+  &-card {
+    width: 120px;
+    height: 30px;
+    margin: 0;
+    background-color: $c-secondOne;
+    color: $c-white;
+  }
+  &-pageHeader {
+    width: 180px;
+    height: 30px;
+    background-color: $c-primary;
+    color: $c-white;
+    font-size: $fs-normal - 3px;
+  }
+  &-submitPost {
+    width: 170px;
+    height: 30px;
+    margin: 0;
+    margin-left: calc(100% - 170px);
+    background-color: $c-primary;
+    color: $c-white;
+  }
+  &-profileConnect,
+  &-profileEdit {
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    background-color: $c-secondTwob2;
+    color: $c-white;
+    font-size: $fs-normal - 2px;
+    z-index: 5;
+  }
+  &-profileConnect {
+    bottom: 30px;
+    right: 120px;
+  }
+  &-profileEdit {
+    top: 22px;
+    right: 20px;
+  }
+  &-editPhoto,
+  &-editBanner {
+    width: 100px;
+    height: 25px;
+    background-color: $c-secondTwob2;
+    color: $c-white;
+    font-size: $fs-normal - 2px;
+  }
+  &-editBanner {
+    position: absolute;
+    bottom: 25px;
+    right: 50px;
+  }
+  &:hover {
+    cursor: pointer;
   }
 }

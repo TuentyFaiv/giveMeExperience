@@ -1,17 +1,19 @@
 .events {
   &-container {
-    width: calc(100% - 310px);
-    margin: 20px 120px 50px 190px;
+    width: calc(100% - 260px);
+    margin: 55px 95px 50px 165px;
     h1 {
-      margin: 20px 0;
+      margin: 20px 20px 10px 20px;
       font-family: $f-large;
       font-size: $fs-large + 2px;
     }
   }
   &-week {
     display: flex;
-    margin-bottom: 30px;
-    padding: 0 20px;
+    width: calc(100% - 40px);
+    margin: 0 15px;
+    margin-bottom: 40px;
+    padding: 20px 5px;
     overflow: hidden;
     &:hover {
       overflow-x: scroll;
@@ -30,23 +32,32 @@
   }
   &-nexts {
     display: grid;
-    width: calc(100% - 80px);
+    width: calc(100% - 40px);
     grid-template-columns: 1fr 1fr 1fr;
-    margin: 0 40px;
-    gap: 20px;
+    padding: 20px;
+    column-gap: 20px;
+    row-gap: 40px;
+  }
+  &-info {
+    button {
+      margin: 0 20px 35px 0;
+    }
   }
 }
 
 .event {
-  min-width: 270px;
-  width: 250px;
-  margin: 20px 20px 20px 0;
+  min-width: 290px;
+  width: calc(100% - 30px);
   &-sinopsis {
+    display: -webkit-box;
     margin: 10px 0;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   &-shared {
-    width: calc(100% - 32px);
-    border: 1px solid $c-gray4;
+    width: calc(100% - 34px);
+    border: 2px solid $c-secondTwo;
     box-shadow: none;
   }
 }

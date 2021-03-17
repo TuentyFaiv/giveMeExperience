@@ -1,14 +1,4 @@
-# Give me experience
-This is a project that will help you gain experience before getting a job
+# X Perience
+This is a personal project, my goal is to be able to generate projects from various areas of study so that students gain experience and have less difficulty getting a job.
 
-Steps to install and run:
-
-- Intall dependeces: 
- 
-  `npm install`
-
-- Run development enviroment:
-
-  `npm run dev`
-
-### That is all
+## I'm still developing it
